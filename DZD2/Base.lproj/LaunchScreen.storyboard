@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="SXx-nU-R2b">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="LKO-tA-3Si">
+            <objects>
+                <viewController id="SXx-nU-R2b" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i2q-HJ-4Jd"/>
+                        <viewControllerLayoutGuide type="bottom" id="y9I-f0-ZP8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y75-yY-O7V">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="動吃動" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLA-CB-kQ1">
+                                <rect key="frame" x="192" y="257" width="216" height="86"/>
+                                <fontDescription key="fontDescription" name="Optima-Regular" family="Optima" pointSize="72"/>
+                                <color key="textColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="PLA-CB-kQ1" firstAttribute="centerY" secondItem="y75-yY-O7V" secondAttribute="centerY" id="5Nc-oI-z33"/>
+                            <constraint firstItem="PLA-CB-kQ1" firstAttribute="centerX" secondItem="y75-yY-O7V" secondAttribute="centerX" id="JAJ-wH-cwm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1oX-Nk-87D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45" y="393"/>
+        </scene>
+    </scenes>
+</document>
