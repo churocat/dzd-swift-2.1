@@ -21,7 +21,7 @@ class ChatViewController: UIViewController {
             }
         case DZDSegue.ChatToChartSegue:
             let offset = memberCollectionVC?.memberCollectionView.contentOffset.x
-            MemberCollectionViewController.offsetX = offset!
+            DZDData.memberCollectionViewoffsetX = offset!
         default:
             break
         }

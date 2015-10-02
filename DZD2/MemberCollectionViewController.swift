@@ -17,9 +17,7 @@ class MemberCollectionViewController: UICollectionViewController {
 
     @IBOutlet var memberCollectionView: UICollectionView!
     
-    // MARK: - Property
-    static var offsetX: CGFloat = 0
-    static var allDrawableMembers: [DZDDrawableUser] = []
+    // MARK: - Responding to View Events
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,7 +31,7 @@ class MemberCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        if MemberCollectionViewController.allDrawableMembers.isEmpty {
+        if DZDData.allDrawableMembers.isEmpty {
             refreshMembers().continueWithSuccessBlock({ (_) -> AnyObject! in
                 dispatch_async(dispatch_get_main_queue()) {
                     self.memberCollectionView.reloadData()
@@ -54,15 +52,15 @@ class MemberCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MemberCollectionViewController.allDrawableMembers.count
+        return DZDData.allDrawableMembers.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MemberCollectionViewCell
         
-        let profileImage = MemberCollectionViewController.allDrawableMembers[indexPath.row].profileImage
+        let profileImage = DZDData.allDrawableMembers[indexPath.row].profileImage
         cell.profileImageView.image = profileImage
-        cell.profileImageView.lineColor = profileImage.isZeroSize() ? UIColor.clearColor() : MemberCollectionViewController.allDrawableMembers[indexPath.row].color
+        cell.profileImageView.lineColor = profileImage.isZeroSize() ? UIColor.clearColor() : DZDData.allDrawableMembers[indexPath.row].color
         
         return cell
     }
@@ -70,7 +68,7 @@ class MemberCollectionViewController: UICollectionViewController {
     // MARK: Private function
 
     private func adjustOffsetX() {
-        memberCollectionView.setContentOffset(CGPoint(x: MemberCollectionViewController.offsetX, y: 0), animated: false)
+        memberCollectionView.setContentOffset(CGPoint(x: DZDData.memberCollectionViewoffsetX, y: 0), animated: false)
     }
 
     private func refreshMembers() -> BFTask {
@@ -85,42 +83,11 @@ class MemberCollectionViewController: UICollectionViewController {
             let otherDrawableMembers = members.map { return DZDDrawableUser(user: $0) }
             let allDrawableMembers = [currentDrawableUser] + otherDrawableMembers
 
-            MemberCollectionViewController.allDrawableMembers = allDrawableMembers
+            DZDData.allDrawableMembers = allDrawableMembers
 
             let tasks: [BFTask] = allDrawableMembers.map{ $0.fetchProfileImage() }
             return BFTask(forCompletionOfAllTasks: tasks)
         })
     }
-    
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    
-    }
-    */
 
 }
