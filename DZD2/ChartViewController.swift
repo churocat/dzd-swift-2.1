@@ -12,6 +12,7 @@ class ChartViewController: UIViewController {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var memberContainerView: UIView!
+    @IBOutlet weak var tempTextView: UITextView!
 
     var memberCollectionVC: MemberCollectionViewController?
     
@@ -23,6 +24,16 @@ class ChartViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        DZDDataCenter.getWeights().continueWithSuccessBlock { (task) -> AnyObject! in
+            if let weights = task.result as? [DZDWeight] {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tempTextView.text = "\(weights)"
+                    self.tempTextView.setNeedsDisplay()
+                }
+            }
+            return nil
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

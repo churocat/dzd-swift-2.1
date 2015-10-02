@@ -26,6 +26,7 @@
 		489CA6261BBBF03A003FBEA6 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA6251BBBF03A003FBEA6 /* ChatViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		48AA8FB01BBE459F00C96240 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AA8FAF1BBE459F00C96240 /* MemberCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		48AA8FB61BBE81D700C96240 /* DZDData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AA8FB51BBE81D700C96240 /* DZDData.swift */; settings = {ASSET_TAGS = (); }; };
+		48AA8FB81BBE926600C96240 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AA8FB71BBE926600C96240 /* AddItemViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF51B5A5B02EFF50F7F7441 /* Pods_DZD2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7E04D8E9FD0DFE870EE2FD /* Pods_DZD2.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		489CA6251BBBF03A003FBEA6 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		48AA8FAF1BBE459F00C96240 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		48AA8FB51BBE81D700C96240 /* DZDData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DZDData.swift; sourceTree = "<group>"; };
+		48AA8FB71BBE926600C96240 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		4EE3E44134FE5AD43376F2B0 /* Pods-DZD2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZD2.release.xcconfig"; path = "Pods/Target Support Files/Pods-DZD2/Pods-DZD2.release.xcconfig"; sourceTree = "<group>"; };
 		811AC34F3D1D8A7BD2C73FB7 /* Pods-DZD2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZD2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DZD2/Pods-DZD2.debug.xcconfig"; sourceTree = "<group>"; };
 		8A7E04D8E9FD0DFE870EE2FD /* Pods_DZD2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DZD2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,7 @@
 				489CA61E1BBBE5EF003FBEA6 /* ChartViewController.swift */,
 				489CA6251BBBF03A003FBEA6 /* ChatViewController.swift */,
 				489CA6201BBBEA86003FBEA6 /* MemberCollectionViewController.swift */,
+				48AA8FB71BBE926600C96240 /* AddItemViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				489CA6211BBBEA86003FBEA6 /* MemberCollectionViewController.swift in Sources */,
 				489CA6191BBBE553003FBEA6 /* DZDDataStructure.swift in Sources */,
 				480893F21BBD522B001C08B8 /* ProfileImageView.swift in Sources */,
+				48AA8FB81BBE926600C96240 /* AddItemViewController.swift in Sources */,
 				489CA6181BBBE553003FBEA6 /* DZDConstants.swift in Sources */,
 				489CA61B1BBBE553003FBEA6 /* DZDUtility.swift in Sources */,
 				480893F01BBCEB4C001C08B8 /* ChatToChartSegue.swift in Sources */,
