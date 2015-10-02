@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		480893EF1BBCEB4C001C08B8 /* ChartToChatSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480893ED1BBCEB4C001C08B8 /* ChartToChatSegue.swift */; settings = {ASSET_TAGS = (); }; };
 		480893F01BBCEB4C001C08B8 /* ChatToChartSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480893EE1BBCEB4C001C08B8 /* ChatToChartSegue.swift */; settings = {ASSET_TAGS = (); }; };
+		480893F21BBD522B001C08B8 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480893F11BBD522B001C08B8 /* ProfileImageView.swift */; settings = {ASSET_TAGS = (); }; };
 		489CA5E41BBBE2F6003FBEA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA5E31BBBE2F6003FBEA6 /* AppDelegate.swift */; };
 		489CA5E91BBBE2F6003FBEA6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 489CA5E71BBBE2F6003FBEA6 /* Main.storyboard */; };
 		489CA5EB1BBBE2F6003FBEA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 489CA5EA1BBBE2F6003FBEA6 /* Assets.xcassets */; };
@@ -22,8 +23,8 @@
 		489CA61D1BBBE583003FBEA6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA61C1BBBE583003FBEA6 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		489CA61F1BBBE5EF003FBEA6 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA61E1BBBE5EF003FBEA6 /* ChartViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		489CA6211BBBEA86003FBEA6 /* MemberCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA6201BBBEA86003FBEA6 /* MemberCollectionViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		489CA6231BBBEEB6003FBEA6 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA6221BBBEEB6003FBEA6 /* MemberCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		489CA6261BBBF03A003FBEA6 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489CA6251BBBF03A003FBEA6 /* ChatViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		48AA8FB01BBE459F00C96240 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AA8FAF1BBE459F00C96240 /* MemberCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF51B5A5B02EFF50F7F7441 /* Pods_DZD2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7E04D8E9FD0DFE870EE2FD /* Pods_DZD2.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		480893ED1BBCEB4C001C08B8 /* ChartToChatSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartToChatSegue.swift; sourceTree = "<group>"; };
 		480893EE1BBCEB4C001C08B8 /* ChatToChartSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatToChartSegue.swift; sourceTree = "<group>"; };
+		480893F11BBD522B001C08B8 /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		489CA5E01BBBE2F6003FBEA6 /* DZD2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DZD2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		489CA5E31BBBE2F6003FBEA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		489CA5E81BBBE2F6003FBEA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,8 +68,8 @@
 		489CA61C1BBBE583003FBEA6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		489CA61E1BBBE5EF003FBEA6 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		489CA6201BBBEA86003FBEA6 /* MemberCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewController.swift; sourceTree = "<group>"; };
-		489CA6221BBBEEB6003FBEA6 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		489CA6251BBBF03A003FBEA6 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		48AA8FAF1BBE459F00C96240 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EE3E44134FE5AD43376F2B0 /* Pods-DZD2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZD2.release.xcconfig"; path = "Pods/Target Support Files/Pods-DZD2/Pods-DZD2.release.xcconfig"; sourceTree = "<group>"; };
 		811AC34F3D1D8A7BD2C73FB7 /* Pods-DZD2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZD2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DZD2/Pods-DZD2.debug.xcconfig"; sourceTree = "<group>"; };
 		8A7E04D8E9FD0DFE870EE2FD /* Pods_DZD2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DZD2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +208,8 @@
 		489CA6241BBBEEC0003FBEA6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				489CA6221BBBEEB6003FBEA6 /* MemberCollectionViewCell.swift */,
+				480893F11BBD522B001C08B8 /* ProfileImageView.swift */,
+				48AA8FAF1BBE459F00C96240 /* MemberCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -396,12 +399,13 @@
 				489CA61F1BBBE5EF003FBEA6 /* ChartViewController.swift in Sources */,
 				489CA6211BBBEA86003FBEA6 /* MemberCollectionViewController.swift in Sources */,
 				489CA6191BBBE553003FBEA6 /* DZDDataStructure.swift in Sources */,
+				480893F21BBD522B001C08B8 /* ProfileImageView.swift in Sources */,
 				489CA6181BBBE553003FBEA6 /* DZDConstants.swift in Sources */,
 				489CA61B1BBBE553003FBEA6 /* DZDUtility.swift in Sources */,
-				489CA6231BBBEEB6003FBEA6 /* MemberCollectionViewCell.swift in Sources */,
 				480893F01BBCEB4C001C08B8 /* ChatToChartSegue.swift in Sources */,
 				480893EF1BBCEB4C001C08B8 /* ChartToChatSegue.swift in Sources */,
 				489CA61A1BBBE553003FBEA6 /* DZDParse.swift in Sources */,
+				48AA8FB01BBE459F00C96240 /* MemberCollectionViewCell.swift in Sources */,
 				489CA6261BBBF03A003FBEA6 /* ChatViewController.swift in Sources */,
 				489CA5E41BBBE2F6003FBEA6 /* AppDelegate.swift in Sources */,
 			);

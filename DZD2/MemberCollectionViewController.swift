@@ -7,15 +7,35 @@
 //
 
 import UIKit
+import Bolts
 
 private let reuseIdentifier = "memberCell"
 
 class MemberCollectionViewController: UICollectionViewController {
-    
+
     static var offsetX: CGFloat = 0
-    
+
+    // MARK: - Outlet
+
     @IBOutlet var memberCollectionView: UICollectionView!
     
+    // MARK: - Property
+    let currentDrawableUser = DZDDrawableUser(user: DZDUser.currentUser()!)
+    var otherDrawableMembers: [DZDDrawableUser] = [] {
+        didSet {
+            let tasks: [BFTask] = allDrawableMembers.map{ $0.fetchProfileImage() }
+            BFTask(forCompletionOfAllTasks: tasks).continueWithSuccessBlock({ (task) -> AnyObject! in
+                dispatch_async(dispatch_get_main_queue()) {
+                    print(self.otherDrawableMembers)
+                    self.memberCollectionView.reloadData()
+                }
+                return nil
+            })
+        }
+    }
+    var allDrawableMembers: [DZDDrawableUser] { return [currentDrawableUser] + otherDrawableMembers }
+
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -28,8 +48,7 @@ class MemberCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        self.collectionView!.registerClass(MemberCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        refreshMembers()
     }
 
     // MARK: UICollectionViewDataSource
@@ -43,20 +62,34 @@ class MemberCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return allDrawableMembers.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! MemberCollectionViewCell
         
-        cell.backgroundColor = UIColor.blackColor()
+        let profileImage = allDrawableMembers[indexPath.row].profileImage
+        cell.profileImageView.image = profileImage
+        cell.profileImageView.lineColor = profileImage.isZeroSize() ? UIColor.clearColor() : allDrawableMembers[indexPath.row].color
         
         return cell
     }
 
+    // MARK: Private function
+
     private func adjustOffsetX() {
-        print("offsetX = \(MemberCollectionViewController.offsetX)")
         memberCollectionView.setContentOffset(CGPoint(x: MemberCollectionViewController.offsetX, y: 0), animated: false)
+    }
+
+    private func refreshMembers() {
+        DZDDataCenter.fetchGameId(currentDrawableUser.user).continueWithSuccessBlock({ (task) -> BFTask! in
+            let gameId = task.result as! String
+            return DZDDataCenter.fetchGameOtherMembers(gameId, user: self.currentDrawableUser.user)
+        }).continueWithSuccessBlock({ (task) -> AnyObject! in
+            let members = task.result as!  [DZDUser]
+            self.otherDrawableMembers = members.map { return DZDDrawableUser(user: $0) }
+            return nil
+        })
     }
     
     // MARK: UICollectionViewDelegate

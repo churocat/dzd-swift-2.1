@@ -198,7 +198,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="qKs-TF-iWo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5m8-j5-HKF">
                             <size key="itemSize" width="80" height="80"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -212,8 +212,22 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-wt-oVQ" customClass="ProfileImageView" customModule="DZD2" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="NUp-wt-oVQ" secondAttribute="bottom" id="Xjc-oL-qz6"/>
+                                    <constraint firstItem="NUp-wt-oVQ" firstAttribute="top" secondItem="nR9-Cw-2ox" secondAttribute="top" id="gFZ-hB-aKe"/>
+                                    <constraint firstItem="NUp-wt-oVQ" firstAttribute="leading" secondItem="nR9-Cw-2ox" secondAttribute="leading" id="iL0-fx-aGC"/>
+                                    <constraint firstAttribute="trailing" secondItem="NUp-wt-oVQ" secondAttribute="trailing" id="lV1-2H-fxm"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="profileImageView" destination="NUp-wt-oVQ" id="dw8-rP-89t"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
