@@ -120,6 +120,11 @@ extension NSDate {
         return date.unixtime
     }
 
+    var day: String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.stringFromDate(self)
+    }
 }
 
 
