@@ -4,6 +4,7 @@
 target 'DZD2' do
 use_frameworks!
     pod 'Parse', '~> 1.8'
+    pod 'SinchRTC'
 end
 
 target 'DZD2Tests' do
