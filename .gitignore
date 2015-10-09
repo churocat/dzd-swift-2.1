@@ -14,5 +14,5 @@ MyPlayground.playground/
 
 # CocoaPods
 Build/
-Pods/
+#Pods/
 Podfile.lock
