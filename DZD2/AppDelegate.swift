@@ -4,7 +4,6 @@
 //
 //  Created by 竹田 on 2015/9/30.
 //  Copyright © 2015年 ChuroCat. All rights reserved.
-// ...
 //
 
 import UIKit
@@ -17,34 +16,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
     var sinchClient: SINClient?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+
         //--------------------------------------
         // MARK: Parse SDK Integration
         //--------------------------------------
-        
+
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         // 'enableLocalDataStore' must be called before 'setApplicationId:clientKey:'
         Parse.enableLocalDatastore()
-        
+
         Parse.setApplicationId("WtDLpRsFfdX6FbIvJtj6U7oazBDBqBLfQax549z0", clientKey: "n1k6VTolBJUKDPRPTRQZBlwGyTxPm6a4y1KN988d")
-        
+
         PFUser.enableAutomaticUser()
-        
+
         let defaultACL = PFACL()
-        
+
         // If you would like all objects to be private by default, remove this line.
         defaultACL.setPublicReadAccess(true)
-        
+
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser:true)
-        
+
         //--------------------------------------
         // MARK: other steps for launching
         //--------------------------------------
-        
+
         // hide the status bar
         UIApplication.sharedApplication().statusBarHidden = true
-        
+
         // choose initial view controller
         let initialViewIdentity = DZDUser.currentUser()?.objectId == nil ? "LoginView" : "ChartView"
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -52,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
         let initialViewController = storyboard.instantiateViewControllerWithIdentifier(initialViewIdentity)
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-        
+
         return true
     }
 
@@ -88,11 +87,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
             self.sinchClient?.startListeningOnActiveConnection()
         }
     }
-    
+
     func clientDidStart(client: SINClient) {
         NSLog("client did start")
     }
-    
+
     func clientDidStop(client: SINClient) {
         NSLog("client did stop")
     }
