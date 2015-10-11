@@ -29,7 +29,10 @@ class LoginViewController: UIViewController {
         DZDUser.logInWithUsernameInBackground(username!, password: password!, block: { (user, error) -> Void in
             self.spinner.stopAnimatingAndEndIgnoringUI()
 
-            if user != nil {
+            if user != nil && error == nil {
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.createSinchClient(username!)
+                
                 self.performSegueWithIdentifier(DZDSegue.ShowViewChart, sender: self)
             } else {
                 DZDUtility.showAlert(error!.userInfo["error"] as? String, controller: self)

@@ -77,6 +77,7 @@
 		4EE3E44134FE5AD43376F2B0 /* Pods-DZD2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZD2.release.xcconfig"; path = "Pods/Target Support Files/Pods-DZD2/Pods-DZD2.release.xcconfig"; sourceTree = "<group>"; };
 		811AC34F3D1D8A7BD2C73FB7 /* Pods-DZD2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZD2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DZD2/Pods-DZD2.debug.xcconfig"; sourceTree = "<group>"; };
 		8A7E04D8E9FD0DFE870EE2FD /* Pods_DZD2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DZD2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5F197471BC81F6400875ECC /* SwiftSinchRTC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSinchRTC-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +126,7 @@
 		489CA5D71BBBE2F6003FBEA6 = {
 			isa = PBXGroup;
 			children = (
+				D5F197471BC81F6400875ECC /* SwiftSinchRTC-Bridging-Header.h */,
 				489CA5E21BBBE2F6003FBEA6 /* DZD2 */,
 				489CA5F71BBBE2F6003FBEA6 /* DZD2Tests */,
 				489CA6021BBBE2F6003FBEA6 /* DZD2UITests */,
@@ -571,6 +573,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.churocat.DZD2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSinchRTC-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -584,6 +587,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.churocat.DZD2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSinchRTC-Bridging-Header.h";
 			};
 			name = Release;
 		};

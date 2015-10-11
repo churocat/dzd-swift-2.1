@@ -10,10 +10,10 @@ import UIKit
 import Parse
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
 
     var window: UIWindow?
-    
+    var sinchClient: SINClient?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -77,5 +77,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: - Sinch function
+    func createSinchClient(userId: String) {
+        if self.sinchClient == nil {
+            self.sinchClient = Sinch.clientWithApplicationKey("4289ad19-2796-44f4-8c75-973b7639060f", applicationSecret: "Ii5M+R+niU28AsWCLA1kxQ==", environmentHost: "sandbox.sinch.com", userId: userId)
+            self.sinchClient?.setSupportMessaging(true)
+            self.sinchClient?.start()
+            self.sinchClient?.delegate = self
+            self.sinchClient?.startListeningOnActiveConnection()
+        }
+    }
+    
+    func clientDidStart(client: SINClient) {
+        NSLog("client did start")
+    }
+    
+    func clientDidStop(client: SINClient) {
+        NSLog("client did stop")
+    }
+
+    func clientDidFail(client: SINClient, error: NSError!) {
+        NSLog("client did fail", error.description)
+        let toast = UIAlertView(title: "Failed to start", message: error.description, delegate: nil, cancelButtonTitle: "OK")
+        toast.show()
+    }
 }
 
