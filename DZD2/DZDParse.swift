@@ -211,6 +211,7 @@ class DZDDataCenter {
         }
     }
 
+    /// get current user's weights
     static func getWeights() -> BFTask {
         let query = PFQuery(className: DZDDB.TabelWeight)
         query.whereKey(DZDDB.Weight.User, equalTo: PFUser.currentUser()!)
@@ -223,6 +224,50 @@ class DZDDataCenter {
                 return BFTask(DZDErrorInfo: "wrong result")
             }
         })
+    }
+    
+    static func getWeights(user: DZDUser) -> BFTask {
+        let query = PFQuery(className: DZDDB.TabelWeight)
+        query.whereKey(DZDDB.Weight.User, equalTo: user)
+        query.orderByAscending(DZDDB.Weight.Date)
+        return query.execute().continueWithSuccessBlock({ (task) -> AnyObject! in
+            if let objects = task.result as? [PFObject] {
+                let weights = self.getPerDayWeights(objects)
+                return BFTask(result: weights)
+            } else {
+                return BFTask(DZDErrorInfo: "wrong result")
+            }
+        })
+    }
+    
+    static func getAllWeights() -> BFTask {
+        let query = PFQuery(className: DZDDB.TabelWeight)
+        query.orderByAscending(DZDDB.Weight.Date)
+        return query.execute().continueWithSuccessBlock({ (task) -> AnyObject! in
+            if let objects = task.result as? [PFObject] {
+                let groupedObjects = groupByUser(objects)
+                var groupedWeights: [DZDUser: [DZDWeight]] = [:]
+                for (user, objects) in groupedObjects {
+                    groupedWeights[user] = self.getPerDayWeights(objects)
+                }
+                return BFTask(result: groupedWeights)
+            } else {
+                return BFTask(DZDErrorInfo: "wrong result")
+            }
+        })
+    }
+    
+    static func groupByUser(objects: [PFObject]) -> [DZDUser: [PFObject]] {
+        var groupedObjects: [DZDUser: [PFObject]] = [:]
+        for object in objects {
+            if let user = object[DZDDB.Weight.User] as? DZDUser {
+                if groupedObjects[user] == nil {
+                    groupedObjects[user] = []
+                }
+                groupedObjects[user]?.append(object)
+            }
+        }
+        return groupedObjects
     }
 
     static func getPerDayWeights(objects: [PFObject]) -> [DZDWeight] {

@@ -12,4 +12,13 @@ import UIKit
 class DZDData {
     static var allDrawableMembers: [DZDDrawableUser] = []
     static var memberCollectionViewoffsetX: CGFloat = 0
+    
+    static func getColor(user: DZDUser) -> UIColor {
+        for drawableMember in DZDData.allDrawableMembers {
+            if drawableMember.user == user {
+                return drawableMember.color
+            }
+        }
+        return UIColor.blackColor()
+    }
 }

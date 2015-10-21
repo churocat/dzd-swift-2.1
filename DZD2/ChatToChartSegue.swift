@@ -21,8 +21,8 @@ class ChatToChartSegue: UIStoryboardSegue {
         let chartVC = self.destinationViewController as! ChartViewController
         let offset = chartVC.memberContainerView.bounds.height
 
-        let window = UIApplication.sharedApplication().keyWindow
-        window?.insertSubview(chartVCView, aboveSubview: chatVCView)
+//        let window = UIApplication.sharedApplication().keyWindow
+//        window?.insertSubview(chartVCView, aboveSubview: chatVCView)
 
         // animate the transition
         UIView.animateWithDuration(0.8, animations: { () -> Void in

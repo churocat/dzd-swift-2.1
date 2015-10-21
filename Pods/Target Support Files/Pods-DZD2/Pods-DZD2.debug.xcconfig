@@ -3,7 +3,8 @@ FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/SinchRTC"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/SinchRTC" "${PODS_ROOT}/Headers/Public/SinchRTC/Sinch"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/Bolts.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Parse.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/SinchRTC" -isystem "${PODS_ROOT}/Headers/Public/SinchRTC/Sinch"
-OTHER_LDFLAGS = $(inherited) -l"c++" -framework "AVFoundation" -framework "AudioToolbox" -framework "Bolts" -framework "Parse" -framework "Security" -framework "Sinch"
+OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/ALCameraViewController.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Bolts.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Parse.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/SinchRTC" -isystem "${PODS_ROOT}/Headers/Public/SinchRTC/Sinch"
+OTHER_LDFLAGS = $(inherited) -l"c++" -framework "ALCameraViewController" -framework "AVFoundation" -framework "AudioToolbox" -framework "Bolts" -framework "Parse" -framework "Security" -framework "Sinch"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-DZD2
 PODS_ROOT = ${SRCROOT}/Pods

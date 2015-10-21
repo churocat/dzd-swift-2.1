@@ -50,7 +50,6 @@ class MemberCollectionViewController: UICollectionViewController {
         return 1
     }
 
-
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DZDData.allDrawableMembers.count
     }

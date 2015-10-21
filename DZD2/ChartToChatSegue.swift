@@ -1,4 +1,4 @@
-//
+
 //  ChartToChatSegue.swift
 //  ParseStarterProject-Swift
 //
@@ -26,8 +26,8 @@ class ChartToChatSegue: UIStoryboardSegue {
         chatVCView.frame = CGRectMake(0.0, screenHeight - offset, screenWidth, screenHeight)
 
         // access the app's key window and insert the destination view above the current (source) one
-        let window = UIApplication.sharedApplication().keyWindow
-        window?.insertSubview(chatVCView, aboveSubview: chartVCView)
+//        let window = UIApplication.sharedApplication().keyWindow
+//        window?.insertSubview(chatVCView, aboveSubview: chartVCView)
 
         // Animate the transition.
         UIView.animateWithDuration(0.8, animations: { () -> Void in

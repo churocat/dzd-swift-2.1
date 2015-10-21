@@ -1,14 +1,17 @@
 PODS:
+  - ALCameraViewController (1.0.8)
   - Bolts/Tasks (1.3.0)
   - Parse (1.9.0):
     - Bolts/Tasks (>= 1.3.0)
   - SinchRTC (3.7.1)
 
 DEPENDENCIES:
+  - ALCameraViewController
   - Parse (~> 1.8)
   - SinchRTC
 
 SPEC CHECKSUMS:
+  ALCameraViewController: fbaed8a35a9272b419ec10004231da356d75bcaa
   Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
   Parse: 712efbc476d4f47b0f96b70db7e53101575753aa
   SinchRTC: 58b08d88160e514c08a1c03305728349113d5379

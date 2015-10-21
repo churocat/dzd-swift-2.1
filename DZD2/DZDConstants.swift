@@ -14,6 +14,8 @@ struct DZDSegue {
     static let ShowMemberCollectionView = "showMemberCollectionView"
     static let ChartToChatSegue = "chartToChatSegue"
     static let ChatToChartSegue = "chatToChartSegue"
+    static let DatePickerSegue = "datePickerSegue"
+    static let DatePickerSegueUnwind = "datePickerSegueUnwind"
 }
 
 

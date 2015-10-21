@@ -52,10 +52,12 @@ code_sign_if_enabled() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework 'Pods-DZD2/ALCameraViewController.framework'
   install_framework 'Pods-DZD2/Bolts.framework'
   install_framework 'Pods-DZD2/Parse.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework 'Pods-DZD2/ALCameraViewController.framework'
   install_framework 'Pods-DZD2/Bolts.framework'
   install_framework 'Pods-DZD2/Parse.framework'
 fi

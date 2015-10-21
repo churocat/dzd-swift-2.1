@@ -120,11 +120,32 @@ extension NSDate {
         return date.unixtime
     }
 
+    var zeroAM: NSDate {
+        return NSDate(timeIntervalSince1970: NSTimeInterval(self.unixtimeZeroAM))
+    }
+    
+    var nextDate: NSDate {
+        return self.dateByAddingTimeInterval(86400)
+    }
+
     var day: String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    var date: String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.stringFromDate(self)
     }
+    
+    var dayOfWeek: String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        return dateFormatter.stringFromDate(self)
+    }
+
 }
 
 
@@ -143,6 +164,24 @@ extension Int {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.stringFromDate(nsDate)
+    }
+
+}
+
+
+extension UIView {
+    
+    func toUIImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, true, UIScreen.mainScreen().scale)
+        
+        let success = self.drawViewHierarchyInRect(CGRect(origin: CGPoint.zero, size: self.frame.size), afterScreenUpdates: false)
+        if success {
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return image
+        } else {
+            return nil
+        }
     }
 
 }
