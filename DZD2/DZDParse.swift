@@ -180,7 +180,38 @@ class DZDDataCenter {
             }
         })
     }
+    
+    enum CalorieType {
+        case Exercise, Food
+    }
 
+    static func saveCalorie(type: CalorieType, value: Double, date: NSDate, name: String, image: UIImage) -> BFTask {
+        var className = ""
+        switch type {
+        case .Exercise: className = DZDDB.TableExerciseCalorie
+        case .Food: className = DZDDB.TableFoodCalorie
+        }
+  
+        let object = PFObject(className: className)
+        object[DZDDB.Calorie.User] = PFUser.currentUser()
+        object[DZDDB.Calorie.Calorie] = value
+        object[DZDDB.Calorie.Date] = date.unixtime
+        object[DZDDB.Calorie.Name] = name
+        
+        if let imageData = UIImagePNGRepresentation(image) {
+            object[DZDDB.Calorie.Image] = PFFile(name:"image.png", data:imageData)
+        }
+        
+        return object.pinInBackground().continueWithSuccessBlock { (_) -> AnyObject! in
+            // NO!!!!!!!!!!!!!!!!!!!!!!!!
+            // cannot use: object.saveEventually()
+            // Unable to saveEventually a PFObject with a relation to a new, unsaved PFFile.
+            // PFFiles still don't support saveEventually
+            object.saveInBackground()
+            return BFTask(result: true)
+        }
+    }
+    
     static func saveWeightForced(weight: Double, date: NSDate) -> BFTask {
         let object = PFObject(className: DZDDB.TabelWeight)
         object[DZDDB.Weight.User] = PFUser.currentUser()

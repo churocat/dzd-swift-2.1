@@ -44,5 +44,15 @@ struct DZDDB {
         static let Weight = "weight"
         static let Date = "date"
     }
+    
+    static let TableExerciseCalorie = "Exercise"
+    static let TableFoodCalorie = "Food"
+    struct Calorie {
+        static let User = "user"
+        static let Calorie = "calorie"
+        static let Date = "date"
+        static let Name = "name"
+        static let Image = "image"
+    }
 
 }

@@ -10,6 +10,7 @@
 		480893EF1BBCEB4C001C08B8 /* ChartToChatSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480893ED1BBCEB4C001C08B8 /* ChartToChatSegue.swift */; settings = {ASSET_TAGS = (); }; };
 		480893F01BBCEB4C001C08B8 /* ChatToChartSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480893EE1BBCEB4C001C08B8 /* ChatToChartSegue.swift */; settings = {ASSET_TAGS = (); }; };
 		480893F21BBD522B001C08B8 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480893F11BBD522B001C08B8 /* ProfileImageView.swift */; settings = {ASSET_TAGS = (); }; };
+		48231A4E1BD9E1500056AAF4 /* RBResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48231A4D1BD9E1500056AAF4 /* RBResizer.swift */; settings = {ASSET_TAGS = (); }; };
 		487EABDD1BCF548D0023BF8C /* ChartViewPortHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487EABDC1BCF548D0023BF8C /* ChartViewPortHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		487EABE21BCF54AA0023BF8C /* ChartTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487EABDF1BCF54AA0023BF8C /* ChartTransformer.swift */; settings = {ASSET_TAGS = (); }; };
 		487EABE31BCF54AA0023BF8C /* ChartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487EABE01BCF54AA0023BF8C /* ChartUtils.swift */; settings = {ASSET_TAGS = (); }; };
@@ -70,6 +71,7 @@
 		480893ED1BBCEB4C001C08B8 /* ChartToChatSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartToChatSegue.swift; sourceTree = "<group>"; };
 		480893EE1BBCEB4C001C08B8 /* ChatToChartSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatToChartSegue.swift; sourceTree = "<group>"; };
 		480893F11BBD522B001C08B8 /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		48231A4D1BD9E1500056AAF4 /* RBResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RBResizer.swift; sourceTree = "<group>"; };
 		487EABDC1BCF548D0023BF8C /* ChartViewPortHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewPortHandler.swift; sourceTree = "<group>"; };
 		487EABDF1BCF54AA0023BF8C /* ChartTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTransformer.swift; sourceTree = "<group>"; };
 		487EABE01BCF54AA0023BF8C /* ChartUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartUtils.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				489CA6161BBBE553003FBEA6 /* DZDParse.swift */,
 				489CA6171BBBE553003FBEA6 /* DZDUtility.swift */,
 				48FD7E061BD7B29200ADEF16 /* UIImageEffects.swift */,
+				48231A4D1BD9E1500056AAF4 /* RBResizer.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				487EABE21BCF54AA0023BF8C /* ChartTransformer.swift in Sources */,
 				487EABF91BCF7F850023BF8C /* DZDWeightChartDataEntry.swift in Sources */,
 				48B25D991BD0DE6200653C13 /* LineChartDataSet.swift in Sources */,
+				48231A4E1BD9E1500056AAF4 /* RBResizer.swift in Sources */,
 				489CA6211BBBEA86003FBEA6 /* MemberCollectionViewController.swift in Sources */,
 				489CA6191BBBE553003FBEA6 /* DZDDataStructure.swift in Sources */,
 				480893F21BBD522B001C08B8 /* ProfileImageView.swift in Sources */,

@@ -320,12 +320,6 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kKL-bo-iO7"/>
-                                    <barButtonItem title="飲水" id="KDs-fR-III">
-                                        <connections>
-                                            <action selector="chooseWhatToRecord:" destination="fqO-9V-4KT" id="agt-xu-1Ms"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tgn-xZ-Uvk"/>
                                 </items>
                                 <color key="tintColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -358,7 +352,7 @@
                                 <color key="textColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="深蹲" placeholder="深蹲" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RmK-Ch-P6i">
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="深蹲" placeholder="深蹲" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RmK-Ch-P6i">
                                 <rect key="frame" x="272" y="357" width="56" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AUw-7s-Epi"/>
@@ -388,7 +382,7 @@
                                     <constraint firstAttribute="height" constant="1" id="dLe-i8-ddK"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xD-Up-Dd4">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xD-Up-Dd4">
                                 <rect key="frame" x="20" y="348" width="560" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -401,13 +395,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W1-wU-6pS">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5W1-wU-6pS">
                                 <rect key="frame" x="284" y="326" width="31" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4w-mo-Duc">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4w-mo-Duc">
                                 <rect key="frame" x="277" y="56" width="45" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <state key="normal" title="☃">
@@ -542,8 +536,13 @@
                     <connections>
                         <outlet property="dateButton" destination="l8D-OB-YUl" id="PY6-6m-cyZ"/>
                         <outlet property="imageView" destination="6Al-et-Mgd" id="7hQ-JA-gNf"/>
+                        <outlet property="nameLabel" destination="5W1-wU-6pS" id="IdO-zo-ddH"/>
+                        <outlet property="nameLineView" destination="7xD-Up-Dd4" id="0Xq-Mf-uYJ"/>
                         <outlet property="nameTextField" destination="RmK-Ch-P6i" id="lUB-wp-8vF"/>
+                        <outlet property="takePhotoButton" destination="r4w-mo-Duc" id="gdP-rc-GQ4"/>
                         <outlet property="titleLabel" destination="7tA-9g-q2d" id="rFA-iG-UTi"/>
+                        <outlet property="unitLabel" destination="Qi6-uX-MwF" id="un2-Zl-Lhq"/>
+                        <outlet property="valueLabel" destination="VsZ-Iv-spL" id="9hc-I9-gCx"/>
                         <outlet property="valueTextField" destination="82H-2g-9Mx" id="iTD-W4-0jv"/>
                     </connections>
                 </viewController>
