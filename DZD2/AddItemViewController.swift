@@ -26,6 +26,11 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
 
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var weightBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var foodBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var exerciseBarButtonItem: UIBarButtonItem!
+    
+    
     var imagePicker: UIImagePickerController!
     
     var recordFunc: ((value: Double, date: NSDate, name: String?, image: UIImage?) -> Void)?
@@ -138,22 +143,48 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         recordCalorie(.Exercise, value: value, date: date, name: name, image: image)
     }
     
+    enum DZDRecordType: String {
+        case Weight = "體重"
+        case Food = "食物"
+        case Exercise = "運動"
+    }
+    
     @IBAction func chooseWhatToRecord(sender: UIBarButtonItem) {
-        let recordType = sender.title!
-        titleLabel.text = "紀錄" + recordType
+        let recordType = DZDRecordType(rawValue: sender.title!)!
+        
+        titleLabel.text = "紀錄" + recordType.rawValue
+        barButtonItemColor(recordType)
+        
         switch (recordType) {
-        case "體重":
+        case .Weight:
             changeUIToWeight()
             recordFunc = recordWeight
             break
-        case "食物":
+        case .Food:
             changeUIToCal()
             recordFunc = recordFoodCalorie
             break
-        default:
+        case .Exercise:
             changeUIToCal()
             recordFunc = recordExerciseCalorie
             break
+        }
+    }
+    
+    func barButtonItemColor(recordType: DZDRecordType) {
+        let normalColor = UIColor.lightGrayColor()
+        
+        weightBarButtonItem.tintColor = normalColor
+        exerciseBarButtonItem.tintColor = normalColor
+        foodBarButtonItem.tintColor = normalColor
+        
+        switch (recordType) {
+        case .Weight:
+            weightBarButtonItem.tintColor = nil
+        case .Exercise:
+            exerciseBarButtonItem.tintColor = nil
+        case .Food:
+            foodBarButtonItem.tintColor = nil
         }
     }
     
