@@ -18,6 +18,7 @@ class ChartViewController: UIViewController {
     var lineChartView: LineChartView!
     var lineChartData: ChartData?
 
+    var screenshotImage: UIImage?
     var isChartLoading: Bool = false
     
     @IBOutlet weak var tempTextView: UITextView!
@@ -36,6 +37,11 @@ class ChartViewController: UIViewController {
         if isChartLoading == false {
             loadChartView()
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        screenshotImage = view.toUIImage()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

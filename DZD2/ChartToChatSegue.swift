@@ -11,33 +11,29 @@ import UIKit
 class ChartToChatSegue: UIStoryboardSegue {
 
     override func perform() {
-        // assign the source and destination views to local variables
-        let chartVCView = self.sourceViewController.view as UIView!
-        let chatVCView = self.destinationViewController.view as UIView!
+        let chartVC = self.sourceViewController as! ChartViewController
+        let chatVC = self.destinationViewController
 
         // get widths and heights
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height
-    
-        let chartVC = self.sourceViewController as! ChartViewController
-        let offset = chartVC.memberContainerView.bounds.size.height
 
+        let offset = chartVC.memberContainerView.bounds.size.height
+        
         // specify the initial position of the destination view
-        chatVCView.frame = CGRectMake(0.0, screenHeight - offset, screenWidth, screenHeight)
+        chatVC.view.frame = CGRectMake(0.0, screenHeight - offset, screenWidth, screenHeight)
 
         // access the app's key window and insert the destination view above the current (source) one
-//        let window = UIApplication.sharedApplication().keyWindow
-//        window?.insertSubview(chatVCView, aboveSubview: chartVCView)
+        let window = UIApplication.sharedApplication().keyWindow
+        window?.insertSubview(chatVC.view, aboveSubview: chartVC.view)
 
         // Animate the transition.
         UIView.animateWithDuration(0.8, animations: { () -> Void in
-            chartVCView.frame = CGRectOffset(chartVCView.frame, 0.0, -screenHeight + offset)
-            chatVCView.frame = CGRectOffset(chatVCView.frame, 0.0, -screenHeight + offset)
+            chartVC.view.frame = CGRectOffset(chartVC.view.frame, 0.0, -screenHeight + offset)
+            chatVC.view.frame = CGRectOffset(chatVC.view.frame, 0.0, -screenHeight + offset)
 
             }) { (Finished) -> Void in
-                self.sourceViewController.presentViewController(self.destinationViewController ,
-                    animated: false,
-                    completion: nil)
+                chartVC.presentViewController(chatVC, animated: false, completion: nil)
         }
     }
 

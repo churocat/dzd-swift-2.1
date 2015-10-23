@@ -12,26 +12,26 @@ class ChatToChartSegue: UIStoryboardSegue {
 
     override func perform() {
         // assign the source and destination views to local variables
-        let chatVCView = self.sourceViewController.view as UIView!
-        let chartVCView = self.destinationViewController.view as UIView!
+        let chatVC = self.sourceViewController
+        let chartVC = self.destinationViewController as! ChartViewController
 
         // get heights
         let screenHeight = UIScreen.mainScreen().bounds.size.height
-
-        let chartVC = self.destinationViewController as! ChartViewController
         let offset = chartVC.memberContainerView.bounds.height
 
-//        let window = UIApplication.sharedApplication().keyWindow
-//        window?.insertSubview(chartVCView, aboveSubview: chatVCView)
+        // add background image view
+        let bgImage = chartVC.screenshotImage
+        let bgImageView = UIImageView(image: bgImage)
+        bgImageView.frame.origin.y -= screenHeight - offset
+        chatVC.view.addSubview(bgImageView)
 
         // animate the transition
         UIView.animateWithDuration(0.8, animations: { () -> Void in
-            chartVCView.frame = CGRectOffset(chartVCView.frame, 0.0, screenHeight - offset)
-            chatVCView.frame = CGRectOffset(chatVCView.frame, 0.0, screenHeight - offset)
-
+            chartVC.view.frame = CGRectOffset(chartVC.view.frame, 0.0, screenHeight - offset)
+            chatVC.view.frame = CGRectOffset(chatVC.view.frame, 0.0, screenHeight - offset)
             }) { (Finished) -> Void in
-
-                self.sourceViewController.dismissViewControllerAnimated(false, completion: nil)
+                chatVC.dismissViewControllerAnimated(false, completion: nil)
+                bgImageView.removeFromSuperview()
         }
     }
 
