@@ -16,6 +16,7 @@ struct DZDSegue {
     static let ChatToChartSegue = "chatToChartSegue"
     static let DatePickerSegue = "datePickerSegue"
     static let DatePickerSegueUnwind = "datePickerSegueUnwind"
+    static let ChooseChartTypeSegueUnwind = "chooseChartTypeSegueUnwind"
 }
 
 
@@ -55,4 +56,12 @@ struct DZDDB {
         static let Image = "image"
     }
 
+}
+
+enum DZDChartType: String {
+    case Weight = "Weight"
+    case Exercise = "Exercise"
+    case Food = "Food"
+    
+    static let allValues = [Weight, Exercise, Food]
 }

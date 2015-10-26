@@ -11,7 +11,6 @@ import Bolts
 
 class ChartViewController: UIViewController {
 
-    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var memberContainerView: UIView!
     @IBOutlet weak var chartScrollView: UIScrollView!
 
@@ -20,15 +19,19 @@ class ChartViewController: UIViewController {
 
     var screenshotImage: UIImage?
     var isChartLoading: Bool = false
-    
-    @IBOutlet weak var tempTextView: UITextView!
 
     var memberCollectionVC: MemberCollectionViewController?
     
+    @IBOutlet weak var chartTypeLabel: UILabel!
+    var chartType: DZDChartType? {
+        didSet {
+            print(chartType)
+            chartTypeLabel.text = chartType?.rawValue
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        usernameLabel.text = DZDUser.currentUser()?.username!
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -70,6 +73,11 @@ class ChartViewController: UIViewController {
                 })
                 return unwindSegue
             }
+            if id == DZDSegue.ChooseChartTypeSegueUnwind {
+                let unwindSegue = ChooseChartTypeSegueUnwind(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                })
+                return unwindSegue
+            }
         }
         
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
@@ -93,16 +101,6 @@ class ChartViewController: UIViewController {
             }
             return nil
         }
-        
-//        return DZDDataCenter.getWeights().continueWithSuccessBlock { (task) -> AnyObject! in
-//            if let weights = task.result as? [DZDWeight] {
-//                let weightsChartDataEntries = weights.map() { return DZDWeightChartDataEntry(weightData: $0) }
-//                let dataSet = LineChartDataSet(dataEntries: weightsChartDataEntries)
-//                let data = ChartData(dataSet: dataSet)
-//                return BFTask(result: data)
-//            }
-//            return nil
-//        }
     }
     
     func loadChartView() {
