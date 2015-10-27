@@ -68,10 +68,13 @@ class ChartData {
         // calculate the date range
         var date = NSDate(timeIntervalSince1970: NSTimeInterval(tsMin)).zeroAM
         dateRange = [date]
-        repeat {
-            date = date.nextDate
-            dateRange.append(date)
-        } while date.unixtime.dateString != tsMax.dateString
+        
+        if date.unixtime.dateString != tsMax.dateString {
+            repeat {
+                date = date.nextDate
+                dateRange.append(date)
+            } while date.unixtime.dateString != tsMax.dateString
+        }
     }
 
 }
