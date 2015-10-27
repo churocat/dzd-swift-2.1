@@ -32,19 +32,20 @@ class ChartTransformer {
         _viewPortHandler = viewPortHandler
     }
     
-    
+
     // MARK: - Functions
     
     /// prepares the matrix that transforms values to pixels
     /// calculates the scale factors from the charts size and offsets
     func prepareMatrixValuePx(chartYMin chartYMin: Double, deltaY: CGFloat, axisLabelWidth: CGFloat) {
         let scaleX = axisLabelWidth
-        let scaleY = (_viewPortHandler.contentHeight / deltaY)
+        let scaleY = ((_viewPortHandler.contentHeight - axisLabelWidth) / deltaY)
         
         // setup all matrices
         _matrixValueToPx = CGAffineTransformIdentity
+        _matrixValueToPx = CGAffineTransformTranslate(_matrixValueToPx, 0, -axisLabelWidth/2)   // before scaling
         _matrixValueToPx = CGAffineTransformScale(_matrixValueToPx, scaleX, -scaleY)
-        _matrixValueToPx = CGAffineTransformTranslate(_matrixValueToPx, 0, CGFloat(-chartYMin))
+        _matrixValueToPx = CGAffineTransformTranslate(_matrixValueToPx, 0, CGFloat(-chartYMin)) // after scaling
     }
     
     /// prepares the matrix that contains all offsets
