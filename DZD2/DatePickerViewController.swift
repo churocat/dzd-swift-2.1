@@ -13,11 +13,18 @@ class DatePickerViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var pickedDate = NSDate()
-    
+    var recordType: DZDChartType = .Weight
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.date = pickedDate
+
+        if recordType == .Food || recordType == .Exercise {
+            datePicker.datePickerMode = .DateAndTime
+        } else {
+            datePicker.datePickerMode = .Date
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

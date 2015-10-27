@@ -16,6 +16,7 @@ class DatePickerSegue: UIStoryboardSegue {
         
         // set the picked date
         datePickerVC.pickedDate = addItemVC.pickedDate
+        datePickerVC.recordType = addItemVC.recordType
         
         // add blur background image to the bottom
         let sourceImage = addItemVC.view.toUIImage()
@@ -27,3 +28,24 @@ class DatePickerSegue: UIStoryboardSegue {
     }
     
 }
+
+
+class DatePickerSegueUnwind: UIStoryboardSegue {
+    
+    override func perform() {
+        let datePickerVC = self.sourceViewController as! DatePickerViewController
+        let addItemVC = self.destinationViewController as! AddItemViewController
+        
+        // set the picked date
+        addItemVC.pickedDate = datePickerVC.datePicker.date
+        
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            datePickerVC.datePicker.alpha = 0.0
+            
+            }) { (finished) -> Void in
+                datePickerVC.dismissViewControllerAnimated(false, completion: nil)
+        }
+    }
+    
+}
+

@@ -36,11 +36,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     
     var recordFunc: ((value: Double, date: NSDate, name: String?, image: UIImage?) -> Void)?
     
-    var pickedDate = NSDate() {
-        didSet {
-            dateButton.setTitle("\(pickedDate.date)  \(pickedDate.dayOfWeek)", forState: .Normal)
-        }
-    }
+    var pickedDate = NSDate() { didSet { setDateButtonTitle(recordType) } }
     
 
     @IBAction func takePhoto() {
@@ -70,8 +66,6 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateButton.setTitle("\(pickedDate.date) \(pickedDate.dayOfWeek)", forState: .Normal)
-        
         chooseRecordType(recordType)
     }
     
@@ -150,8 +144,11 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     
     
     private func chooseRecordType(type: DZDChartType) {
+        recordType = type
+
         titleLabel.text = "+ " + type.rawValue
-        barButtonItemColor(recordType)
+        barButtonItemColor(type)
+        setDateButtonTitle(type)
         
         switch (type) {
         case .Weight:
@@ -231,4 +228,12 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
     }
 
+    func setDateButtonTitle(type: DZDChartType) {
+        var title = "\(pickedDate.date) \(pickedDate.dayOfWeek)"
+        if type == .Food || recordType == .Exercise {
+            title += " \(pickedDate.time)"
+        }
+        
+        dateButton.setTitle(title, forState: .Normal)
+    }
 }
