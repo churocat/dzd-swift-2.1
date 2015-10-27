@@ -30,6 +30,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var foodBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var exerciseBarButtonItem: UIBarButtonItem!
     
+    var recordType: DZDChartType = .Weight
     
     var imagePicker: UIImagePickerController!
     
@@ -71,8 +72,7 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidLoad()
         dateButton.setTitle("\(pickedDate.date) \(pickedDate.dayOfWeek)", forState: .Normal)
         
-        changeUIToWeight()
-        recordFunc = recordWeight
+        chooseRecordType(recordType)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -143,19 +143,17 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         recordCalorie(.Exercise, value: value, date: date, name: name, image: image)
     }
     
-    enum DZDRecordType: String {
-        case Weight = "體重"
-        case Food = "食物"
-        case Exercise = "運動"
+    @IBAction func chooseWhatToRecord(sender: UIBarButtonItem) {
+        let type = DZDChartType(rawValue: sender.title!)!
+        chooseRecordType(type)
     }
     
-    @IBAction func chooseWhatToRecord(sender: UIBarButtonItem) {
-        let recordType = DZDRecordType(rawValue: sender.title!)!
-        
-        titleLabel.text = "紀錄" + recordType.rawValue
+    
+    private func chooseRecordType(type: DZDChartType) {
+        titleLabel.text = "+ " + type.rawValue
         barButtonItemColor(recordType)
         
-        switch (recordType) {
+        switch (type) {
         case .Weight:
             changeUIToWeight()
             recordFunc = recordWeight
@@ -171,14 +169,14 @@ class AddItemViewController: UIViewController, UINavigationControllerDelegate, U
         }
     }
     
-    func barButtonItemColor(recordType: DZDRecordType) {
+    func barButtonItemColor(type: DZDChartType) {
         let normalColor = UIColor.lightGrayColor()
         
         weightBarButtonItem.tintColor = normalColor
         exerciseBarButtonItem.tintColor = normalColor
         foodBarButtonItem.tintColor = normalColor
         
-        switch (recordType) {
+        switch (type) {
         case .Weight:
             weightBarButtonItem.tintColor = nil
         case .Exercise:

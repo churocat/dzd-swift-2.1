@@ -139,7 +139,6 @@ class ChartViewController: UIViewController {
                     dataSets += [dataSet]
                 }
                 let data = ChartData(dataSets: dataSets)
-                print(data)
                 return BFTask(result: data)
             }
             return nil

@@ -50,6 +50,7 @@
 		48B25D971BD0DE0700653C13 /* ChartSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B25D961BD0DE0700653C13 /* ChartSettings.swift */; settings = {ASSET_TAGS = (); }; };
 		48B25D991BD0DE6200653C13 /* LineChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B25D981BD0DE6200653C13 /* LineChartDataSet.swift */; settings = {ASSET_TAGS = (); }; };
 		48B25D9D1BD0DFE500653C13 /* LineChartDataRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B25D9C1BD0DFE500653C13 /* LineChartDataRenderer.swift */; settings = {ASSET_TAGS = (); }; };
+		48E540171BDF642100DCF994 /* ChartToAddSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E540161BDF642100DCF994 /* ChartToAddSegue.swift */; settings = {ASSET_TAGS = (); }; };
 		48FD7E071BD7B29200ADEF16 /* UIImageEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD7E061BD7B29200ADEF16 /* UIImageEffects.swift */; settings = {ASSET_TAGS = (); }; };
 		ECF51B5A5B02EFF50F7F7441 /* Pods_DZD2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7E04D8E9FD0DFE870EE2FD /* Pods_DZD2.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		48B25D961BD0DE0700653C13 /* ChartSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartSettings.swift; sourceTree = "<group>"; };
 		48B25D981BD0DE6200653C13 /* LineChartDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartDataSet.swift; sourceTree = "<group>"; };
 		48B25D9C1BD0DFE500653C13 /* LineChartDataRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartDataRenderer.swift; sourceTree = "<group>"; };
+		48E540161BDF642100DCF994 /* ChartToAddSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartToAddSegue.swift; sourceTree = "<group>"; };
 		48FD7E061BD7B29200ADEF16 /* UIImageEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEffects.swift; sourceTree = "<group>"; };
 		4EE3E44134FE5AD43376F2B0 /* Pods-DZD2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZD2.release.xcconfig"; path = "Pods/Target Support Files/Pods-DZD2/Pods-DZD2.release.xcconfig"; sourceTree = "<group>"; };
 		811AC34F3D1D8A7BD2C73FB7 /* Pods-DZD2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DZD2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DZD2/Pods-DZD2.debug.xcconfig"; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				480893EE1BBCEB4C001C08B8 /* ChatToChartSegue.swift */,
 				48231A571BDA46090056AAF4 /* BlackBackgroundSegue.swift */,
 				480136911BDE215F00C2768E /* ChooseChartTypeSegueUnwind.swift */,
+				48E540161BDF642100DCF994 /* ChartToAddSegue.swift */,
 			);
 			name = Segue;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				489CA6211BBBEA86003FBEA6 /* MemberCollectionViewController.swift in Sources */,
 				48231A581BDA46090056AAF4 /* BlackBackgroundSegue.swift in Sources */,
 				489CA6191BBBE553003FBEA6 /* DZDDataStructure.swift in Sources */,
+				48E540171BDF642100DCF994 /* ChartToAddSegue.swift in Sources */,
 				480893F21BBD522B001C08B8 /* ProfileImageView.swift in Sources */,
 				487EABDD1BCF548D0023BF8C /* ChartViewPortHandler.swift in Sources */,
 				48AA8FB81BBE926600C96240 /* AddItemViewController.swift in Sources */,
