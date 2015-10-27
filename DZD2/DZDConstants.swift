@@ -55,6 +55,11 @@ struct DZDDB {
         static let Name = "name"
         static let Image = "image"
     }
+    
+    enum CalorieType: String {
+        case Food = "Food"
+        case Exercise = "Exercise"
+    }
 
 }
 

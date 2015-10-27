@@ -35,16 +35,16 @@ class DZDDrawableUser {
 
 
 
-class DZDWeight : CustomStringConvertible {
+class DZDDataObject : CustomStringConvertible {
 
-    var weight: Double
+    var value: Double
     var date: Int
     var description: String {
-        return "\(date.datetimeString) \(weight) \n"
+        return "\(date.datetimeString) \(value) \n"
     }
 
-    init (weight: Double, date: Int) {
-        self.weight = weight
+    init (value: Double, date: Int) {
+        self.value = value
         self.date = date
     }
 

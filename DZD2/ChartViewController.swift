@@ -18,15 +18,13 @@ class ChartViewController: UIViewController {
     var lineChartData: ChartData?
 
     var screenshotImage: UIImage?
-    var isChartLoading: Bool = false
 
     var memberCollectionVC: MemberCollectionViewController?
     
     @IBOutlet weak var chartTypeLabel: UILabel!
-    var chartType: DZDChartType? {
+    var chartType: DZDChartType = .Weight {
         didSet {
-            print(chartType)
-            chartTypeLabel.text = chartType?.rawValue
+            chartTypeLabel.text = chartType.rawValue
         }
     }
     
@@ -37,9 +35,20 @@ class ChartViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if isChartLoading == false {
-            loadChartView()
-        }
+        initChartViewIfNil()
+        
+//        DZDDataCenter.getAllCalories(.Food).continueWithSuccessBlock { (task) -> AnyObject! in
+//            if let groupedCalories = task.result as? [DZDUser:[DZDDataObject]] {
+//                for (user, calories) in groupedCalories {
+//                    print(user)
+//                    print(calories)
+//                    print("-----")
+//                }
+//            }
+//            return nil
+//        }
+        
+        loadChartView(chartType)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -84,47 +93,54 @@ class ChartViewController: UIViewController {
     }
     
     // MARK :- chart
-
-    private func fetchChartData() -> BFTask {
-        
-        return DZDDataCenter.getAllWeights().continueWithSuccessBlock { (task) -> AnyObject! in
-            if let groupedWeights = task.result as? [DZDUser:[DZDWeight]] {
-                var dataSets: [LineChartDataSet] = []
-                for (user, weights) in groupedWeights {
-                    let dataEntries = weights.map() { return DZDWeightChartDataEntry(weightData: $0) }
-                    let dataSet = LineChartDataSet(dataEntries: dataEntries)
-                    dataSet.color = DZDData.getColor(user)
-                    dataSets += [dataSet]
-                }
-                let data = ChartData(dataSets: dataSets)
-                return BFTask(result: data)
-            }
-            return nil
-        }
-    }
     
-    func loadChartView() {
-        isChartLoading = true
+    func initChartViewIfNil() {
         if lineChartView == nil {
             let lineChartframe = CGRect(origin: CGPoint.zero, size: chartScrollView.frame.size)
             lineChartView = LineChartView(frame: lineChartframe)
             chartScrollView.contentSize.width = lineChartView.frame.size.width
             chartScrollView.addSubview(lineChartView)
         }
-        
-//        if lineChartData != nil {
-//            lineChartView.data = lineChartData!
-//        }
-        
-        fetchChartData().continueWithSuccessBlock { (task) -> AnyObject! in
+    }
+    
+    func loadChartView(chartType: DZDChartType) -> BFTask {
+        return fetchChartData(chartType).continueWithSuccessBlock { (task) -> AnyObject! in
             if let chartData = task.result as? ChartData {
                 self.lineChartData = chartData
                 self.lineChartView.data = chartData
                 self.chartScrollView.contentSize.width = self.lineChartView.frame.size.width
                 dispatch_async(dispatch_get_main_queue()) {
                     self.lineChartView.setNeedsDisplay()
-                    self.isChartLoading = false
                 }
+            }
+            return nil
+        }
+    }
+
+    private func fetchChartData(chartType: DZDChartType) -> BFTask {
+        var fetchChartDataTask: BFTask
+
+        switch (chartType) {
+        case .Weight:
+            fetchChartDataTask = DZDDataCenter.getAllWeights()
+        case .Food:
+            fetchChartDataTask = DZDDataCenter.getAllCalories(.Food)
+        case .Exercise:
+            fetchChartDataTask = DZDDataCenter.getAllCalories(.Exercise)
+        }
+        
+        return fetchChartDataTask.continueWithSuccessBlock { (task) -> AnyObject! in
+            if let groupedObjects = task.result as? [DZDUser:[DZDDataObject]] {
+                var dataSets: [LineChartDataSet] = []
+                for (user, objects) in groupedObjects {
+                    let dataEntries = objects.map() { return DZDChartDataEntry(dataObject: $0) }
+                    let dataSet = LineChartDataSet(dataEntries: dataEntries)
+                    dataSet.color = DZDData.getColor(user)
+                    dataSets += [dataSet]
+                }
+                let data = ChartData(dataSets: dataSets)
+                print(data)
+                return BFTask(result: data)
             }
             return nil
         }

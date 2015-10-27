@@ -277,11 +277,31 @@ class DZDDataCenter {
         return query.execute().continueWithSuccessBlock({ (task) -> AnyObject! in
             if let objects = task.result as? [PFObject] {
                 let groupedObjects = groupByUser(objects)
-                var groupedWeights: [DZDUser: [DZDWeight]] = [:]
+                var groupedWeights: [DZDUser: [DZDDataObject]] = [:]
                 for (user, objects) in groupedObjects {
                     groupedWeights[user] = self.getPerDayWeights(objects)
                 }
                 return BFTask(result: groupedWeights)
+            } else {
+                return BFTask(DZDErrorInfo: "wrong result")
+            }
+        })
+    }
+    
+    
+    
+    static func getAllCalories(carolieType: DZDDB.CalorieType) -> BFTask {
+        let className = carolieType.rawValue
+        let query = PFQuery(className: className)
+        query.orderByAscending(DZDDB.Calorie.Date)
+        return query.execute().continueWithSuccessBlock({ (task) -> AnyObject! in
+            if let objects = task.result as? [PFObject] {
+                let groupedObjects = groupByUser(objects)
+                var groupedCarolies: [DZDUser: [DZDDataObject]] = [:]
+                for (user, objects) in groupedObjects {
+                    groupedCarolies[user] = self.getPerDaySumCalories(objects)
+                }
+                return BFTask(result: groupedCarolies)
             } else {
                 return BFTask(DZDErrorInfo: "wrong result")
             }
@@ -301,8 +321,33 @@ class DZDDataCenter {
         return groupedObjects
     }
 
-    static func getPerDayWeights(objects: [PFObject]) -> [DZDWeight] {
-        var weights: [DZDWeight] = []
+    static func getPerDaySumCalories(objects: [PFObject]) -> [DZDDataObject] {
+        var calories: [DZDDataObject] = []
+        
+        var sumArray: [Int:Double] = [:]
+        for object in objects {
+            let ts = object[DZDDB.Calorie.Date] as! Int
+            let nsDate = NSDate(timeIntervalSince1970: NSTimeInterval(ts))
+            let tsZeroAM = nsDate.unixtimeZeroAM
+            let value = object[DZDDB.Calorie.Calorie] as! Double
+            
+            if let _ = sumArray[tsZeroAM] {
+                sumArray[tsZeroAM] = sumArray[tsZeroAM]! + value
+            } else {
+                sumArray[tsZeroAM] = value
+            }
+        }
+        
+        for (ts, sum) in sumArray {
+            calories += [DZDDataObject(value: sum, date: ts)]
+        }
+        
+        return calories
+    }
+    
+    
+    static func getPerDayWeights(objects: [PFObject]) -> [DZDDataObject] {
+        var weights: [DZDDataObject] = []
 
         // there might be more than one weight in a day
         // make only one weight in a day
@@ -328,7 +373,7 @@ class DZDDataCenter {
         for (_, object) in existed {
             let weight = object[DZDDB.Weight.Weight] as! Double
             let date = object[DZDDB.Weight.Date] as! Int
-            weights += [DZDWeight(weight: weight, date: date)]
+            weights += [DZDDataObject(value: weight, date: date)]
         }
 
         // sort by date
