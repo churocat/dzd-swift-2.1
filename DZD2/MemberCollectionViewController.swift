@@ -11,7 +11,13 @@ import Bolts
 
 private let reuseIdentifier = "memberCell"
 
+protocol MemberCollectionViewControllerDelegate {
+    func MemberCollectionViewControllerDidSelect(user: DZDDrawableUser)
+}
+
 class MemberCollectionViewController: UICollectionViewController {
+
+    var delegate: MemberCollectionViewControllerDelegate?
 
     // MARK: - Outlet
 
@@ -62,6 +68,11 @@ class MemberCollectionViewController: UICollectionViewController {
         cell.profileImageView.lineColor = profileImage.isZeroSize() ? UIColor.clearColor() : DZDData.allDrawableMembers[indexPath.row].color
         
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let user = DZDData.allDrawableMembers[indexPath.row]
+        delegate?.MemberCollectionViewControllerDidSelect(user)
     }
 
     // MARK: Private function

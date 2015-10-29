@@ -9,7 +9,7 @@
 import UIKit
 import Bolts
 
-class ChartViewController: UIViewController {
+class ChartViewController: UIViewController, MemberCollectionViewControllerDelegate {
 
     @IBOutlet weak var memberContainerView: UIView!
     @IBOutlet weak var chartScrollView: UIScrollView!
@@ -21,6 +21,9 @@ class ChartViewController: UIViewController {
 
     var memberCollectionVC: MemberCollectionViewController?
     
+    var selectedUser: DZDDrawableUser?
+    
+    
     @IBOutlet weak var chartTypeLabel: UILabel!
     var chartType: DZDChartType = .Weight {
         didSet {
@@ -30,6 +33,7 @@ class ChartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        memberCollectionVC?.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -66,6 +70,10 @@ class ChartViewController: UIViewController {
         case DZDSegue.ChartToChatSegue:
             let offset = memberCollectionVC?.memberCollectionView.contentOffset.x
             DZDData.memberCollectionViewoffsetX = offset!
+        case DZDSegue.ShowProfileView:
+            if let vc = segue.destinationViewController as? ProfileViewController {
+                vc.drawableUser = selectedUser
+            }
         default:
             break
         }
@@ -143,6 +151,12 @@ class ChartViewController: UIViewController {
             }
             return nil
         }
+    }
+    
+    // MARK: - MemberCollectionViewControllerDelegate
+    func MemberCollectionViewControllerDidSelect(user: DZDDrawableUser) {
+        selectedUser = user
+        performSegueWithIdentifier(DZDSegue.ShowProfileView, sender: self)
     }
 
 }

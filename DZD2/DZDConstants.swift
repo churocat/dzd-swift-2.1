@@ -17,6 +17,7 @@ struct DZDSegue {
     static let DatePickerSegue = "datePickerSegue"
     static let DatePickerSegueUnwind = "datePickerSegueUnwind"
     static let ChooseChartTypeSegueUnwind = "chooseChartTypeSegueUnwind"
+    static let ShowProfileView = "showProfileView"
 }
 
 
