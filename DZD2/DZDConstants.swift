@@ -46,16 +46,6 @@ struct DZDDB {
         static let Weight = "weight"
         static let Date = "date"
     }
-    
-    static let TableSinchMessage = "SinchMessage"
-    struct SinchMessage {
-        static let GameId = "gameId"
-        static let MessageId = "messageId"
-        static let senderName = "senderId"
-        static let receiverName = "recipientId"
-        static let text = "text"
-        static let timestamp = "timestamp"
-    }
 
     static let TableExerciseCalorie = "Exercise"
     static let TableFoodCalorie = "Food"
