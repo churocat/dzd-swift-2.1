@@ -33,8 +33,8 @@ class DZDDrawableUser {
 
 }
 
-class DZDDataObject : CustomStringConvertible {
 
+class DZDDataObject : CustomStringConvertible {
     var value: Double
     var date: Int
     var description: String {

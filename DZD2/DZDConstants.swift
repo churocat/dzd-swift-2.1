@@ -46,7 +46,6 @@ struct DZDDB {
         static let Weight = "weight"
         static let Date = "date"
     }
-    
 
     static let TableExerciseCalorie = "Exercise"
     static let TableFoodCalorie = "Food"
