@@ -16,13 +16,13 @@ class DZDDrawableUser {
     var user: DZDUser
     var profileImage: UIImage
     var color: UIColor
-    
+
     init (user: DZDUser) {
         self.user = user
         self.profileImage = UIImage()
         self.color = DZDUtility.getColor()
     }
-    
+
     func fetchProfileImage() -> BFTask! {
         return DZDDataCenter.fetchProfileImageData(user).continueWithSuccessBlock({ (task) -> AnyObject! in
             let imageData = task.result as! NSData
@@ -32,7 +32,6 @@ class DZDDrawableUser {
     }
 
 }
-
 
 class DZDDataObject : CustomStringConvertible {
     var value: Double
@@ -52,11 +51,11 @@ class DZDMessage : CustomStringConvertible {
     var message: String = ""
     var senderName: String = ""
     var time: NSDate = NSDate()
-    
+
     var description: String {
         return "\(senderName): \(message) at \(time)";
     }
-    
+
     init (message: String, sender: String, time: NSDate) {
         self.message = message
         self.senderName = sender
