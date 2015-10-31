@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate, SINMessageClientDelegate {
 
     var window: UIWindow?
     var sinchClient: SINClient?
@@ -90,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
 
     func clientDidStart(client: SINClient) {
         NSLog("client did start")
+        self.sinchClient?.messageClient().delegate = self
     }
 
     func clientDidStop(client: SINClient) {
@@ -100,6 +101,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SINClientDelegate {
         NSLog("client did fail", error.description)
         let toast = UIAlertView(title: "Failed to start", message: error.description, delegate: nil, cancelButtonTitle: "OK")
         toast.show()
+    }
+    
+    //MARK: - Sinch message
+    func sendTextMessage(text: String, recipients: [String]) {
+        let outgoingMessage = SINOutgoingMessage(recipients: recipients, text: text)
+        self.sinchClient?.messageClient().sendMessage(outgoingMessage)
+    }
+   
+    func saveMessagesOnParse(sinchMessage: SINMessage) {
+    }
+   
+    func messageSent(message: SINMessage!, recipientId: String!) {
+        
+    }
+    
+    func messageClient(messageClient: SINMessageClient!, didReceiveIncomingMessage message: SINMessage!) {
+        
+    }
+    
+    func messageDelivered(info: SINMessageDeliveryInfo!) {
+        
+    }
+    
+    func messageFailed(message: SINMessage!, info messageFailureInfo: SINMessageFailureInfo!) {
+        
     }
 }
 

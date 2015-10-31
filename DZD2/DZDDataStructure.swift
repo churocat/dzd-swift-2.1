@@ -33,8 +33,6 @@ class DZDDrawableUser {
 
 }
 
-
-
 class DZDDataObject : CustomStringConvertible {
 
     var value: Double
@@ -50,6 +48,21 @@ class DZDDataObject : CustomStringConvertible {
 
 }
 
+class DZDMessage : CustomStringConvertible {
+    var message: String = ""
+    var senderName: String = ""
+    var time: NSDate = NSDate()
+    
+    var description: String {
+        return "\(senderName): \(message) at \(time)";
+    }
+    
+    init (message: String, sender: String, time: NSDate) {
+        self.message = message
+        self.senderName = sender
+        self.time = time
+    }
+}
 
 
 extension UIActivityIndicatorView {

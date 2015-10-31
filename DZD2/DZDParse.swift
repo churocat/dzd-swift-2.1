@@ -75,7 +75,7 @@ extension PFQuery {
             }
         })
     }
-
+    
     private func fetchByObjectIdFromNetworkAndSaveToLocalDatastore(objectId: String) -> BFTask {
         return self.getObjectInBackgroundWithId(objectId).continueWithSuccessBlock({ (cloudTask) -> AnyObject! in
             let cloudResult = cloudTask.result as! PFObject
@@ -163,6 +163,20 @@ class DZDDataCenter {
     static func fetchProfileImageData(user: DZDUser) -> BFTask! {
         let userImageFile = user[DZDDB.User.Image] as! PFFile
         return userImageFile.getDataInBackground()
+    }
+    
+    static func fetchSinchMessage(gameId: String) -> BFTask! {
+        let query = PFQuery(className: DZDDB.TableSinchMessage)
+        query.whereKey(DZDDB.SinchMessage.GameId, equalTo: gameId);
+        query.orderByAscending(DZDDB.SinchMessage.timestamp)
+        return query.execute().continueWithSuccessBlock({ (task) -> AnyObject! in
+            if let objects = task.result as? [PFObject] {
+                let messages = self.getSinchMessages(objects)
+                return BFTask(result: messages)
+            } else {
+                return BFTask(DZDErrorInfo: "wrong result")
+            }
+        })
     }
 
     static func saveWeight(weight: Double, date: NSDate) -> BFTask {
@@ -382,4 +396,16 @@ class DZDDataCenter {
         return weights
     }
 
+    static func getSinchMessages(objects: [PFObject]) -> [DZDMessage] {
+        var messages: [DZDMessage] = []
+        
+        for object in objects {
+            let senderName = object[DZDDB.SinchMessage.senderName] as! String
+            let message = object[DZDDB.SinchMessage.text] as! String
+            let timestamp = object[DZDDB.SinchMessage.timestamp] as! NSDate
+            messages += [DZDMessage(message: message, sender: senderName, time: timestamp)]
+        }
+        
+        return messages
+    }
 }

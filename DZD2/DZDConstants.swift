@@ -47,6 +47,7 @@ struct DZDDB {
         static let Date = "date"
     }
     
+
     static let TableExerciseCalorie = "Exercise"
     static let TableFoodCalorie = "Food"
     struct Calorie {
@@ -60,6 +61,16 @@ struct DZDDB {
     enum CalorieType: String {
         case Food = "Food"
         case Exercise = "Exercise"
+    }
+
+    static let TableSinchMessage = "SinchMessage"
+    struct SinchMessage {
+        static let GameId = "gameId"
+        static let MessageId = "messageId"
+        static let senderName = "senderId"
+        static let receiverName = "recipientId"
+        static let text = "text"
+        static let timestamp = "timestamp"
     }
 
 }
